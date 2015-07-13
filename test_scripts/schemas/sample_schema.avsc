@@ -1,0 +1,11 @@
+{
+  "namespace": "pindrop",
+  "type": "record",
+  "name": "Consortium",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "phone", "type": "string"},
+    {"name": "pin", "type": "string"},
+    {"name": "cc", "type": "string"}
+  ]
+}

@@ -1,0 +1,6 @@
+name             'kafka'
+maintainer       'Pindrop Security'
+maintainer_email 'cmoultrie@pindropsecurity.com'
+license          'All rights reserved'
+description      'Installs/Configures Kafka'
+version          '0.1.0'

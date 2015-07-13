@@ -1,0 +1,4 @@
+avro==1.7.7
+kafka-python==0.9.4
+six==1.9.0
+wsgiref==0.1.2
