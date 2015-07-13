@@ -81,6 +81,10 @@ Kafka_Version: 0.8.2.1
 Enable_JMX: true
 ```
 
+I couldn't find a PPA hosting kafka-manager's deb, so I had to bundle it here.
+Building it in a RAM limited vagrant takes forever, committing 50M of debian
+makes me feel dirty, but saving time was more important.
+
 ## Todo ##
 
 *  Firewall Rules - Don't just purge ufw
