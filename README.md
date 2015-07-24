@@ -51,6 +51,15 @@ To run these scripts, first install the python requirements:
 pip install -r requirements.txt
 ```
 
+Because the kakfa nodes are configured to bind to the hostname instead of all
+interfaces, you must add these entries to your `/etc/hosts` file.
+
+```sh
+192.168.33.21 kafka1
+192.168.33.22 kafka2
+192.168.33.23 kafka3
+```
+
 Then run the scripts in this order, each in its own terminal:
 
 ```sh
