@@ -1,5 +1,5 @@
 package "openjdk-7-jre" do
-  version '7u79-2.5.5-0ubuntu0.14.04.2'
+  version '7u121-2.6.8-1ubuntu0.14.04.3'
 end
 
 package "zookeeper" do

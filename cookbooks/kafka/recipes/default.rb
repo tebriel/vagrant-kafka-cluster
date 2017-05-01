@@ -1,25 +1,30 @@
-package "scala" do
-  version "2.9.2+dfsg-2"
+package "openjdk-7-jre" do
+  version '7u121-2.6.8-1ubuntu0.14.04.3'
 end
 
 package "ufw" do
   action :purge
 end
 
-kafka_version = 'kafka_2.9.2-0.8.2.1'
+kafka_version = 'kafka_2.11-0.10.1.1'
 
 # Vagrant adds 127.0.0.1 <hostname> <hostname> which fucks up kafka
 cookbook_file '/etc/hosts'
 
 remote_file "/tmp/kafka.tgz" do
-  source "http://apache.mirrors.lucidnetworks.net/kafka/0.8.2.1/#{kafka_version}.tgz"
-  checksum "b748030f22ff5b3473094f5e9bee79ab66bca8cbb1bbf31d2cb7022e079e8f56"
+  source "http://www-eu.apache.org/dist/kafka/0.10.1.1/#{kafka_version}.tgz"
 end
 
 execute 'tar -xzf /tmp/kafka.tgz -C /opt'
 template "/opt/#{kafka_version}/config/server.properties"
 
-execute 'JMX_PORT=9999 KAFKA_HEAP_OPTS=-Xmx512m bin/kafka-server-start.sh -daemon config/server.properties' do
+ENV['JMX_PORT'] = '9999'
+ENV['KAFKA_HEAP_OPTS'] = '-Xmx512m'
+
+execute "echo \"export JMX_PORT=#{ENV['JMX_PORT']}\" >> /etc/profile"
+execute "echo \"export KAFKA_HEAP_OPTS=#{ENV['KAFKA_HEAP_OPTS']}\" >> /etc/profile"
+
+execute 'bin/kafka-server-start.sh -daemon config/server.properties' do
   cwd "/opt/#{kafka_version}"
 end
 
